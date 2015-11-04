@@ -1,0 +1,33 @@
+% ---------------------------------------------------------------------------
+\section{Conclusão}\label{sec:conclusao}
+
+Este trabalho tratou de investigar a \emph{Web Audio API} e alguns trabalhos derivados desta API partindo de uma abordagem técnica.
+A investigação desta API e suas possibilidades musicais e artísticas levaram ao desenvolvimento de uma ferramenta chamada Termpot.
+
+No processo de desenvolvimento do Termpot levamos em conta um processo de síntese semelhante ao \emph{Wavepot} e realizamos algumas customizações.
+Características presentes nos ambientes Gibber e Wavepot que julgamos importantes foram adicionadas a nova ferramenta.
+Mesmo rudimentar se comparada a estas ferramentas, a ferramenta desenvolvida apresentou-se bastante versátil.
+
+Entretanto, apontamos os seguintes problemas técnico : a biblioteca jQuery apontada como uma provável fonte de \emph{xruns}\footnote{\emph{Google Chrome} 44.0.2403.89 Ubuntu 14.04. Embora o conceito seja original do ALSA (Linux), o fenômeno é semelhante do ponto de vista perceptivo. Sua definição técnica é: "Um 'xrun' pode ser um estouro de buffer ou de uma saturação de um buffer. Um aplicativo de áudio ou não foi rápido o suficiente para transmitir dados (\ldots) ou não rápido o suficiente para processar os dados" \cite{markc_xruns_2013}. Tradução nossa de \emph{An "xrun" can be either a buffer underrun or a buffer overrun. In both cases an audio app was either not fast enough to deliver data (\ldots)  or not fast enough to process data (\ldots)}.}.
+
+Além disso é discutido na comunidade \emph{WebAudio API} a substituição do 
+
+
+A criação musical baseada em funções matemáticas, como é proposto na abordagem do Termpot, permite ao músico explorar as técnicas tradicionais de síntese como síntese aditiva, subtrativa, FM, AM mas permite também explorar outras construções musicais que diferem destas técnicas.
+Neste sentido, a ferramenta desenvolvida apresenta uma abordagem técnico-composicional diferenciada de alguns métodos e ferramentas existentes por poder estabelecer-se no limiar entre a matemática e a música.
+
+
+
+\subsection{Trabalhos Futuros}
+
+\begin{inparaenum}[\itshape i)\upshape]
+\item criar um servidor;
+\item otimizar o emulador, talvez substituindo o Ptty ou propondo melhorias;
+\item suporte para amostras pré-gravadas.
+\end{inparaenum}
+
+\footnote{Disponível em  \url{https://jahpd.github.io/termpot}.}. 
+
+\subsection{Agradecimentos}
+
+Os autores agradecem ao Guilherme Rafael Soares por ter apresentado as biblioteca Ptty.js, aos desenvolvedores dos projetos investigados por disponibilizarem seus códigos e a FAPEMIG por subsidiar a pesquisa.

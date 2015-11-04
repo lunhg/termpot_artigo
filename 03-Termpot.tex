@@ -1,0 +1,30 @@
+\section{Desenvolvimento do Termpot}\label{sec:termpot}
+
+Semelhante ao \emph{Wavepot} pelo método de síntese, mas diverso pela abordagem de codificação, o Termpot utiliza para enviar comandos uma mistura de comandos e linguagem \emph{coffeescript}\cite{burnham2011coffeescript}\footnote{\url{http://coffeescript.org/}, acessado em \today.}.
+Com a extensão média de uma linha, é possível criar sonoridades utilizando as funções pré-definidas existentes no ambiente: ruído (branco), senóide, dente-de-serra, triangular, pulso, envelope e sequenciamento.
+Também é possível prototipar rapidamente novas funções para encapsular novas funcionalidade sonoras ao ambiente.
+Além da atividade de codificação, elaboramos uma maneira para a criar e utilizar GUIs que se assemalham a \emph{sliders} de uma mesa de som. 
+
+
+Uma característica singular do \emph{Wavepot} original, é a possibilidade de separação da programação-partitura em dois arquivos, muito semelhante ao método \emph{Instrumento-Orquestra} descrito por Max Mathews e utilizado no CSound \cite{mathews_digital_1963, di_nunzio_genesi_2010}.
+Isso é possível adicionando um marcador $@module$ aos comentários iniciais de um código.
+Desta forma, serão reconhecidos dois arquvivos durante a performance de improvisação: $index.js$ e $test.js$.
+O primeiro permite elaborar os instrumentos, enquanto o segundo realiza o DSP (teste).
+
+Já no Termpot, buscamos utilizar outro método de codificação focado em uma abordagem mais performática.
+
+
+Arriscamos a comentar uma inspiração no GROOVE de \cite{mathews_groove_1970,nunzio_groove_2010}, quando este propõe a criação de novas funções em tempo de execução. Ao mesmo tempo em que utilizamos a biblioteca \emph{Ptty.js} dando ao \emph{Termpot} as características de um emulador de terminal no que tange a utilização de comandos em tempo de execução, como em um terminal, integrado com controles manuais.
+Por esta razão, acreditamos que esta ferramenta é inspirada no conceito de compor, memorizar, editar e controlar funções do tempo, algoritmicamente e manualmente~\cite{mathews_groove_1970}.
+
+
+\subsection*{Metodologia de desenvolvimento}
+
+Para a implementação, três tarefas foram necessárias: \begin{description}
+\item[1) Customizar um emulador terminal]
+\item Utilizamos a biblioteca \emph{Ptty.js} é uma biblioteca documentada e pode ser facilmente implementada seguindo instruções de seu arquivo \emph{README}. É baseada em jQuery e permitiu uma rápida prototipação.
+\item[2) Implementar um ambiente de síntese sonora integrado ao emulador]
+\item Uma das facilidades do \emph{Ptty} é definir ambientes; elaboramos um ambiente que controla a \emph{Web Audio API} nos moldes descritos na Seção 2.
+\item[3) Comandos diversos]
+\item Ajuda, inspeção de funções, definição de novas funções, tocar, parar, pausar, gravar e download e criação de controles gráficos. Para gravação, utilizamos o \emph{recorderWorker.js}\footnote{\url{https://github.com/mattdiamond/Recorderjs/blob/master/recorderWorker.js}.} de Matt Diamond.
+\end{description}
