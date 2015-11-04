@@ -1,4 +1,4 @@
-\section{Introdução}\label{sec:gen}
+\section{Introdução}\label{sec:introducao}
 
 % - Qual é a da coisa? (sintese c webaudio)
 % - como a coisa funciona? 
@@ -9,11 +9,7 @@
  % http://www.charlie-roberts.com/pubs/Gibber_charles_roberts_icmc_2012.pdf
 
 
-A \emph{Web Audio API} \cite{w3c_web_2012} possibilitou a emancipação de áudio generativo para jogos e aplicativos de síntese sonora em navegadores de rede tornando o navegador uma plataforma musical viável de diversas formas \cite{roberts_web_2013,wyse_viability_2014}.
-
-% 
-Esta API traz diversos \emph{nós de áudio} padrões que podem ser concatenados em um grafo de DSP.
-Um exemplo desta concatenação pode ser vista na Figura \ref{fig:shime} onde são utilizados três nós diferentes em um sintetizador, em sequência: uma instância de oscilador de ondas (OscilatorNode), uma instância de ganho (GainNode) e uma última instância que representa os alto-falantes (DestinationNode).
+A \emph{Web Audio API} \cite{w3c_web_2012} possibilitou o processamento de sinais digitais de áudio em navegadores de rede, como por exemplo o Mozzilla Firefoz, Google Chrome ou Apple Safari \cite{roberts_web_2013,wyse_viability_2014}.  Esta API traz diversos \emph{nós de áudio} padrões, que podem ser concatenados em um grafo de DSP. Um exemplo desta concatenação é demonstrado na Figura \ref{fig:shime}.  São utilizados três instâncias de nós diferentes, em sequência, para construir um simples sintetizador. Um oscilador de ondas (OscilatorNode), ganho (\emph{GainNode}), e alto-falantes (\emph{DestinationNode}).
 
 \begin{figure}[h]
 \centering
@@ -22,17 +18,11 @@ Um exemplo desta concatenação pode ser vista na Figura \ref{fig:shime} onde s�
 \label{fig:shime}
 \end{figure}
 
-Um sintetizador mais complexo pode ter diversos nós concatenados, entre eles um nó ``especial'' chamado \emph{ScriptProcessorNode}, que permite o cálculo de cada \emph{sample} durante o processamento de sua saída.
+Um sintetizador mais complexo pode ter diversos nós concatenados, entre eles um nó ``especial'' chamado \emph{ScriptProcessorNode}. Uma instância deste nó permite o cálculo customizado de cada \emph{sample}. Baseado neste nó, alguns \emph{frameworks} são eles mesmos os instrumentos musicais. Por exemplo, \emph{Gibber} \footnote{disponível em \url{http://gibber.mat.ucsb.edu/})}; ou \emph{Wavepot} \footnote{Disponível em \url{http://www.wavepot.com})}\label{footnote:apps}.
 
-Baseado nesta API e principalmente neste nó, alguns \emph{frameworks} são eles mesmos os instrumentos musicais; seja pelo encapsulamento de funcionalidades, seja pela maneira de pensar como o músico -- profissional ou amador -- codificará o processamento de sinais de áudio no navegador.
-Entre estes \emph{frameworks}, destacam-se o trabalhos como \emph{Gibber} e \emph{Wavepot}. 
+Neste sentido, nossa motivação foi desenvolver um \emph{software} de luteria composicional, \emph{Termpot}, como uma experiência técnico-estética de uma pesquisa mais ampla. Esta pesquisa envolve a prática \emph{livecoding} \cite{collins_origins_2014}. O resultado não é o objetivo da pesquisa, mas envolveu uma proposta histórica de Max Mathews, \cite{mathews_groove_1970}, GROOVE, pouco discutida pela comunidade acadêmica. Esta abordagem foi fundamental para a concepção do que é \emph{livecoding}, bem como a estrutura do \emph{software} desenvolvido.
 
-Este trabalho apresenta uma outra ferramenta \emph{open source}, desenvolvida a partir do estudo dos \emph{softwares} acima.
-Chamamos de Termpot: \emph{Term} por uma questão de similaridade com um terminal de computador, inspirado no GROOVE de Max Mathews e \emph{Pot} por uma questão de similaridade técnica com o \emph{Wavepot}.
-Nossa motivação foi desenvolver um \emph{framework} como uma plataforma de luteria composicional\cite{soares_luteria_2015} aberta e colaborativa, a partir de algumas reflexões de notação e execução musical.
-
-
-A Seção \ref{sec:trabalhos} deste artigo apresenta os frameworks supracitados e uma breve comparação entre eles.
-A Seção \ref{sec:termpot} apresenta a ferramenta proposta.
-A Seção \ref{sec:resultados} traz os resultados desta pesquisa e a Seção \ref{sec:conclusao} apresenta as conclusões do trabalho até o presente momento.
+%A Seção \ref{sec:trabalhos} deste artigo apresenta os frameworks supracitados e uma breve comparação entre eles.
+%A Seção \ref{sec:termpot} apresenta a ferramenta proposta.
+%A Seção \ref{sec:resultados} traz os resultados desta pesquisa e a Seção \ref{sec:conclusao} apresenta as conclusões do trabalho até o presente momento.
 
