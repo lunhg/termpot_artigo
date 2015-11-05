@@ -9,7 +9,7 @@
  % http://www.charlie-roberts.com/pubs/Gibber_charles_roberts_icmc_2012.pdf
 
 
-A \emph{Web Audio API} \cite{w3c_web_2012} possibilitou o processamento de sinais digitais de áudio em navegadores de rede, como por exemplo o Mozzilla Firefoz, Google Chrome ou Apple Safari \cite{roberts_web_2013,wyse_viability_2014}.  Esta API traz diversos \emph{nós de áudio} padrões, que podem ser concatenados em um grafo de DSP. Um exemplo desta concatenação é demonstrado na Figura \ref{fig:shime}.  São utilizados três instâncias de nós diferentes, em sequência, para construir um simples sintetizador. Um oscilador de ondas (OscilatorNode), ganho (\emph{GainNode}), e alto-falantes (\emph{DestinationNode}).
+O processamento de sinais digitais de áudio em navegadores de rede, como por exemplo o Mozzilla Firefox, Google Chrome ou Apple Safari, é sumarizado por \cite{roberts_web_2013,wyse_viability_2014}. Utilizando a \emph{Web Audio API} \cite{w3c_web_2012} \emph{nós de áudio} podem ser concatenados em um grafo de DSP. Um exemplo desta concatenação é demonstrado na Figura \ref{fig:shime}.  \cite{srikumar_tamming_2013} apresenta três instâncias de nós diferentes (\emph{OscilatorNode}, \emph{GainNode}, \emph{DestinationNode}), em sequência, para construir um simples sintetizador.
 
 \begin{figure}[h]
 \centering
@@ -18,9 +18,17 @@ A \emph{Web Audio API} \cite{w3c_web_2012} possibilitou o processamento de sinai
 \label{fig:shime}
 \end{figure}
 
-Um sintetizador mais complexo pode ter diversos nós concatenados, entre eles um nó ``especial'' chamado \emph{ScriptProcessorNode}. Uma instância deste nó permite o cálculo customizado de cada \emph{sample}. Baseado neste nó, alguns \emph{frameworks} são eles mesmos os instrumentos musicais. Por exemplo, \emph{Gibber} \footnote{disponível em \url{http://gibber.mat.ucsb.edu/})}; ou \emph{Wavepot} \footnote{Disponível em \url{http://www.wavepot.com})}\label{footnote:apps}.
+\subsection{Script Processor Node}
 
-Neste sentido, nossa motivação foi desenvolver um \emph{software} de luteria composicional, \emph{Termpot}, como uma experiência técnico-estética de uma pesquisa mais ampla. Esta pesquisa envolve a prática \emph{livecoding} \cite{collins_origins_2014}. O resultado não é o objetivo da pesquisa, mas envolveu uma proposta histórica de Max Mathews, \cite{mathews_groove_1970}, GROOVE, pouco discutida pela comunidade acadêmica. Esta abordagem foi fundamental para a concepção do que é \emph{livecoding}, bem como a estrutura do \emph{software} desenvolvido.
+Um sintetizador mais complexo contêm diversos nós concatenados. Este sintetizador complexo pode ser simplificado com um outro nó, chamado \emph{ScriptProcessorNode}. Uma instância deste nó permite o cálculo customizado de cada \emph{sample} em um \emph{buffer}, à semelhança de uma função matemática. 
+
+\subsection{GROOVE}
+
+Este artigo envolve uma pesquisa sobre prática \emph{livecoding} \cite{collins_origins_2014,prospero_social_2015,prospero_social_2015}. 
+
+O resultado deste artigo não é o objetivo da pesquisa, mas relaciona uma proposta histórica de Max Mathews, \cite{mathews_groove_1970}, GROOVE. O estudo deste trabalho de Mathews foi fundamental para o entendimento de um paradigma do \emph{livecoding}: ao digitar comandos em um console de computador, é possível ouvir os os resultados, e modificá-los através de novos comandos, e/ou com controles externos. 
+
+Para que este modelo de paradigma fosse aplicado em um navegador de internet, recorremos à implementação do \emph{ScriptProcessorNode}, da equipe desenvolvedora do programa \emph{Wavepot}\footnote{Disponível em \url{http://www.wavepot.com}.}. 
 
 %A Seção \ref{sec:trabalhos} deste artigo apresenta os frameworks supracitados e uma breve comparação entre eles.
 %A Seção \ref{sec:termpot} apresenta a ferramenta proposta.

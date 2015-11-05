@@ -1,6 +1,8 @@
 \section{Termpot}\label{sec:termpot}
 
-O Termpot (ver Figura \ref{fig:termpot}) é um ambiente para improvisação de luteria composicional \cite{iazzetta_musica_2009,soares_luteria_2015}, mais especificamente, um ambiente \emph{web} de \emph{livecoding}. Adapta o ambiente \emph{Wavepot} (apresentado na nota-de-rodapé 2 da Seção \ref{sec:introducao}) para um emulador de terminal, controlado pela linguagem \emph{coffeescript}\cite{burnham2011coffeescript}\footnote{\url{http://coffeescript.org/}, acessado em \today.}. O ambiente possibilita a improvisação de códigos com a extensão média de uma linha (ver Código \ref{code:resultado1}). 
+O Termpot (ver Figura \ref{fig:termpot}) é um ambiente de luteria composicional \cite{iazzetta_musica_2009,soares_luteria_2015}, que utiliza o \emph{livecoding} como paradigma de programação. É também uma adaptação do ambiente \emph{Wavepot} (apresentado na nota-de-rodapé 2 da Seção \ref{sec:introducao}) . 
+
+Comandos utilizam a sintaxe da linguagem \emph{coffeescript}\cite{burnham2011coffeescript}\footnote{\url{http://coffeescript.org/}, acessado em \today.}, que possibilita otimizações diversas, entre elas, o tempo de produção do próprio código. Neste sentido, o ambiente possibilita a improvisação de códigos com a extensão média de uma linha (ver Código \ref{code:resultado1}). 
 
 \begin{figure}[!h]
 \centering
@@ -11,53 +13,65 @@ O Termpot (ver Figura \ref{fig:termpot}) é um ambiente para improvisação de l
 
 \begin{listing}
 \begin{minted}[linenos,frame=lines,framesep=2mm,fontsize=\scriptsize]{javascript}
+
 .........................................
 . Virtual machine started at             .
 . Thu Sep 03 2015 13:32:15 GMT-0300 (BRT).
 . type help for instructions             .
 ..........................................
-$\$$ |
-$\$$ wavepot 1024
+$\$$ |                                           (1)
+$\$$ wavepot 1024                                (2)
 ..................................
-. sintetizador de sample a sample. 
+. sintetizador de sample a sample.               (3) 
 . amostragem: 44100              .
 . canais: 2                      .
 . buffer: 1024                   .
 ..................................
-wavepot > play
-wavepot > 0.71 * sin 440, sin(330, sin(220, 0.5)
+wavepot > play                                   (4)
+wavepot > 0.71 * sin 440, sin(330, sin(220, 0.5) (5)
 true
 \end{minted}
-\caption{Console do \emph{termpot} aguardando dados de entrada do improvisador; o improvisador inicia o ambiente wavepot com um buffer de 1024 pontos flutuantes; o improvisador inicia o processamento de áudio; o improvisador define o processamento de áudio de uma cascata de Modulção de amplitude.}
+\caption{Console do \emph{termpot} aguardando dados de entrada do improvisador (1). O improvisador inicia o ambiente wavepot com um buffer de 1024 pontos flutuantes (2). Informações diversas do sistema de áudio (3). O improvisador inicia o processamento de áudio (4). O improvisador define o processamento de áudio (5).}
 \label{code:resultado1}
 \end{listing}
 
-Em tese, é possível criar sonoridades semelhantes ao \emph{Wavepot}. Porém, dado o curto tempo de desenvolvimento, pré-definimos apenas ruído (branco), senóide, dente-de-serra, triangular, pulso, envelope e sequenciamento.
+É interessante notar aqui um princípio de compilação \emph{Just In Time} \cite{aycock_brief_2003}. Antes que uma função de áudio específica seja executada, o sistema é executado, à princípio, com silêncio. Ao se definir uma função de saída, o sistema automaticamente executa a função para os alto-falantes. O processo de síntese é semelhante ao \emph{Wavepot}. 
 
-É possível prototipar rapidamente novas funções para encapsular novas funcionalidade sonoras ao ambiente.
+\subsection{Criação de funções em tempo de execução}
+
+Uma das potencialidades do \emph{software} é a capacidade de definir novas funções em tempo de execução, do ponto-de-vista dos desenvolvedores, de maneira bastante rápida. Estas funções podem ser encapsuladas em outras novas funções. Existem também funções de base, como \emph{noise} (Ruído branco), \emph{sin} (senóide), \emph{saw} (dente-de-serra), \emph{tri} (triangular), \emph{pulse} (pulso), \emph{env} (envelope) e \emph{sequenciamento} (seq).. 
 
 \begin{listing}
 \begin{minted}[linenos,frame=lines,framesep=2mm,fontsize=\scriptsize]{javascript}
-wavepot > def tresAM(f, f1, f2, a) a * sin f, sin(f1, sin(f2, 0.5)
+wavepot > def tresAM(f, f1, f2, a) a * sin f, doissin(f1, f2)
+true
+wavepot > def doissin(f1, f2) sin f1, sin(f2, 0.5)
 true
 wavepot > inspect tresAM
 var tresAM;
 
 tresAM = function(f, f1, f2, a) {
-  return a * sin(f, sin(f1, sin(f2, 0.5)))
+  return a * sin(f, doissin(f1, f2))
 };
-wavepot > tresAM 440, 330, 220, 0.71 
+wavepot > inspect doissin
+var doissin;
+
+doissin = function(f1, f2) {
+  return sin(f1, sin(f2, 0.5))
+};
+wavepot > tresAM 440, 330, 220, 0.71
+true
 \end{minted}
 \label{code:resultado2}
 \end{listing}
 
-Além da atividade de síntese, elaboramos uma maneira para a criar e utilizar GUIs de controle (\emph{sliders}), como uma mesa de som (ver Código \ref{code:resultado3}
+Além da prototipação de funções, habilitamos a criação dinâmica de GUIs de controle (\emph{sliders}, ver Código \ref{code:resultado3})
 
 \begin{listing}
 \begin{minted}[linenos,frame=lines,framesep=2mm,fontsize=\scriptsize]{javascript}
-wavepot > slider("left", 0, 1024)
+wavepot > slider "left", 0, 1024
 true
-wavepot > slider("right", 0, 1024)
+wavepot > slider "right", 0, 1024
 true
 wavepot > stereo sin(440,0.5)*left(), sin(330, 0.5)*right()
 true
