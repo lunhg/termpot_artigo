@@ -9,7 +9,7 @@
  % http://www.charlie-roberts.com/pubs/Gibber_charles_roberts_icmc_2012.pdf
 
 
-O processamento de sinais digitais de áudio em navegadores de rede, é sumarizado por \cite{w3c_web_2012,roberts_web_2013-,wyse_viability_2014}. \cite{srikumar_tamming_2013} exemplifica a utilização de \emph{nós de áudio}, que podem ser concatenados em um grafo de DSP, como três instâncias de nós diferentes -- \emph{OscilatorNode}, \emph{GainNode}, \emph{DestinationNode} --, na Figura \ref{fig:shime}. Existe um outro nó, \emph{ScriptProcessorNode} que possibilita a customização de funções sonoras. Este último foi utilizado no desenvolvimento do \emph{Termpot}.
+O processamento de sinais digitais de áudio em navegadores de rede, é sumarizado por \cite{w3c_web_2012,roberts_web_2013-,wyse_viability_2014}. \cite{srikumar_tamming_2013} exemplifica a utilização de \emph{nós de áudio}, que podem ser concatenados em um grafo de DSP, como três instâncias de nós diferentes -- \emph{OscilatorNode}, \emph{GainNode}, \emph{DestinationNode} --, na Figura \ref{fig:shime}. Existe um outro nó, \emph{ScriptProcessorNode} que possibilita a customização de funções sonoras. Por exemplo, o \emph{ScriptProcessorNode} pode ser usado para externalizar a(o) improvisador(a) suas próprias customizações de ``nós virtuais'' (funções matemáticas), semelhantes aos \emph{OscilatorNode} e \emph{GainNode} . Esta abordagem foi utilizada no desenvolvimento do \emph{Termpot}.
 
 \begin{figure}[h]
 \centering
@@ -20,7 +20,11 @@ O processamento de sinais digitais de áudio em navegadores de rede, é sumariza
 
 \section{Trabalho relacionado: GROOVE}
 
-Este artigo envolve a utilização  tecnologia \emph{Web Audio}, e de seu nó \emph{ScriptProcessorNode}, sob uma perspectiva histórica. Neste sentido, o trabalho de \cite{mathews_groove_1970}, GROOVE \emph{Generated Real-time Operations On Voltage-controlled Equipment},foi fundamental para a estruturação do \emph{Termpot}. Um humano digita comandos em um computador, que são renderizados em som. O som, por sua vez, será percebido pela pessoa, que fornecerá uma nova entrada de dados (através de novos comandos, ou dispositivos, como controles manuais). O processo de síntese sonora considera, portanto, questões performáticas, como a imediaticidade. Um exemplo de música feita com o GROOVE, como apresentado na figura \ref{fig:groove}, é a obra \emph{The Expanding Universe} de \cite{spiegel_expanding_1975} \footnote{Disponível em \url{https://www.youtube.com/watch?v=dYUZmsfm4Ww}.}.
+Além da tecnologia \emph{Web Audio}, este artigo envolve uma interpretação do GROOVE -- \emph{Generated Real-time Operations On Voltage-controlled Equipment},  de \cite{mathews_groove_1970}. A compositora Laurie Spiegel (figura \ref{fig:groove}) sumariza a utilização do GROOVE durante a produção de \emph{The Expanding Universe} (1975) \footnote{Disponível em \url{https://www.youtube.com/watch?v=dYUZmsfm4Ww}.}:
+\ \\
+\begin{quote}
+\small{Todas as músicas no GROOVE eram representadas na memória digital como funções abstratas do tempo, séries paralelas de dois pontos, cada ponto sendo um instante no tempo e um valor instantâneo. A taxa de amostragem para essas funções, na maior parte das vezes usada como controle de tensão, era cronometrada por um grande e antiquado oscilador analógico, que era normalmente fixado em 100 Hertz, cada ciclo do oscilador pulsando à frente do código, o computador lia todos dos dispositivos de entrada em tempo real, e reproduzia todas as amostras naquele ponto do tempo em cada uma das funções de tempo. \cite[online]{spiegel_expanding_1975} }\footnote{Tradução de \emph{All music in GROOVE was represented in digital memory as abstract functions of time, parallel series of point pairs, each point being an instant in time and an instantaneous value. The sampling rate for these functions, which would be used mostly as control voltages, was clocked by a big old-fashioned analog oscillator that was usually set to 100 Hertz, each cycle of the oscillator pulsing one run through the code, the computer reading all of the real time input devices and playing of all of the samples at that time point in each of the time functions.}}
+\end{quote}
 
 \begin{figure}[!h]
   \begin{center}
@@ -40,9 +44,9 @@ Descrever um programa \emph{web} desenvolvido com base no \emph{ScriptProcessorN
 
 \section{Metodologia de desenvolvimento}
 
-Para a implementação, três tarefas foram necessárias: \begin{inparaenum}[\itshape 1)\upshape]
-\item Customização um emulador terminal: foi utilizada a biblioteca \emph{Ptty.js}\footnote{Disponível em \url{http://code.patxipierce.com/jquery-plugin/ptty/}.}
-\item Definição de um ambiente interno customizado, no \emph{ScriptProcessorNode}, como utilizado pelo ambiente \emph{Wavepot}\footnote{Disponível em \url{http://www.wavepot.com}.}.
+\begin{inparaenum}[\itshape 1)\upshape]
+\item Customização um emulador terminal \emph{Ptty.js} (\url{http://code.patxipierce.com/jquery-plugin/ptty/}).
+\item Definição de um ambiente interno, baseado no ambiente \emph{Wavepot} (\url{http://www.wavepot.com}).
 \item Definição de comandos deste ambiente interno: inspeção de funções, definição de novas funções, tocar, parar, pausar, gravar e download, criação de controles gráficos (\emph{jQueryUI}) e gravação\footnote{Disponível em \url{https://github.com/mattdiamond/Recorderjs/blob/master/recorderWorker.js}.}.
 \end{inparaenum}
 
