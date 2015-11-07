@@ -1,6 +1,6 @@
 \section{Resultados}\label{sec:termpot}
 
-O Termpot (ver Figura \ref{fig:termpot})\footnote{Disponível em \url{https://jahpd.github.io/termpot} e \url{https://www.github.com/jahpd/termpot}.} é uma customização do ambiente Wavepot. A(o) improvisador(a) define novas funções, em linguagem \emph{coffeescript} \cite{burnham2011coffeescript}\footnote{Disponível em \url{http://coffeescript.org/}.}. Estas funções  podem ser encapsuladas em outras funções e então executadas. Um sumário das possibilidades são apresentadas no Código \ref{code:resultado}.
+O Termpot (ver figura \ref{fig:termpot}) \footnote{Disponível em \url{https://jahpd.github.io/termpot}.} é uma customização do ambiente Wavepot. Novas funções sonoras podem definidas em linguagem \emph{coffeescript} \cite{burnham2011coffeescript}, encapsuladas em outras funções, e então executadas e gravadas. Apresentamos um sumário no código 1. %\ref{code:resultados}.
 
 \begin{figure}[!h]
 \centering
@@ -10,7 +10,7 @@ O Termpot (ver Figura \ref{fig:termpot})\footnote{Disponível em \url{https://ja
 \end{figure}
 
 \begin{listing}
-\begin{minted}[linenos,frame=lines,framesep=2mm,fontsize=\scriptsize]{javascript}
+\begin{minted}[linenos,frame=lines,framesep=2mm,fontsize=\tiny]{javascript}
 $ |                                                       (1)
 $ wavepot 1024                                            (2)
 ..................................
@@ -39,5 +39,9 @@ true
 wavepot > export                                          (10)
 \end{minted}
 \tiny{\caption{Console do \emph{Termpot} aguardando dados de entrada do improvisador (1).\emph{Boot} do ambiente \emph{wavepot} com um buffer de 1024 amostras por ciclo de DSP (2). Informações diversas do sistema (3). Início do processamento de áudio (4). O improvisador define uma função \emph{AM440} (5). O sistema informa as funções diponíveis (6). Definição de interfaces gráficas controladoras (7). Comando para gravar o processamento em um arquivo (8). Execução da função \emph{AM440} com controles (9). Realizar o download da gravação (10)}}
-\label{code:resultado1}
+\label{code:resultados}
 \end{listing}
+
+\subsection*{Problemas Técnicos}
+
+Existem \emph{xruns}. Um \emph{xrun} ``(\ldots) pode ser um estouro de buffer ou de uma saturação de um buffer. Um aplicativo de áudio ou não foi rápido o suficiente para transmitir dados (\ldots) ou não rápido o suficiente para processar os dados" \cite{markc_xruns_2013}\footnote{Tradução nossa de \emph{An "xrun" can be either a buffer underrun or a buffer overrun. In both cases an audio app was either not fast enough to deliver data (\ldots)  or not fast enough to process data}.}. Existe uma hipótese, não verificada, que a possível fonte dos \emph{xruns} é a biblioteca \emph{jQuery}. 
