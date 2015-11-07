@@ -1,6 +1,6 @@
 \section{Resultados}\label{sec:termpot}
 
-O Termpot (ver figura \ref{fig:termpot}) \footnote{Disponível em \url{https://jahpd.github.io/termpot}.} é uma customização do ambiente Wavepot. Novas funções sonoras podem definidas em linguagem \emph{coffeescript} \cite{burnham2011coffeescript}, encapsuladas em outras funções, e então executadas e gravadas. Apresentamos um sumário no código 1. %\ref{code:resultados}.
+O \emph{Termpot} (ver figura \ref{fig:termpot}) \footnote{Disponível em \url{https://jahpd.github.io/termpot}.} é uma customização do \emph{Wavepot}. Funções sonoras podem ser definidas em linguagem \emph{coffeescript} \cite{burnham2011coffeescript}, executadas e gravadas (Código 1). %\ref{code:resultados}.
 
 \begin{figure}[!h]
 \centering
@@ -27,7 +27,7 @@ wavepot > inspect                                         (6)
 funcoes definidas 
 tau  tmod  mute  stereo  sin  sin2  saw  ramp  ttri
 tri  sqr   pulse noise	 perc test  seq  bpm   nextevent
-AM
+AM440
 wavepot > slider "f", 1, 1025                             (7)
 true
 wavepot > slider "a", 0, 1024            
@@ -38,7 +38,7 @@ wavepot > AM440 f()*1000, a()                             (9)
 true
 wavepot > export                                          (10)
 \end{minted}
-\tiny{\caption{Console do \emph{Termpot} aguardando dados de entrada do improvisador (1).\emph{Boot} do ambiente \emph{wavepot} com um buffer de 1024 amostras por ciclo de DSP (2). Informações diversas do sistema (3). Início do processamento de áudio (4). O improvisador define uma função \emph{AM440} (5). O sistema informa as funções diponíveis (6). Definição de interfaces gráficas controladoras (7). Comando para gravar o processamento em um arquivo (8). Execução da função \emph{AM440} com controles (9). Realizar o download da gravação (10)}}
+\tiny{\caption{Ptty aguardando dados de entrada do improvisador (1). \emph{Boot} do ambiente \emph{wavepot} com um buffer de 1024 amostras por ciclo de DSP (2). Informações diversas do sistema (3). Execução do DSP (4). Definição de uma função \emph{AM440} (5). Informações sobre as funções diponíveis (6). Definição de GUIs (7). Gravação em um arquivo de áudio (8). Execução da função \emph{AM440} com controles (9). Download da gravação (10)}}
 \label{code:resultados}
 \end{listing}
 
